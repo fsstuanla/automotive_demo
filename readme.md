@@ -1,4 +1,4 @@
-# Cloud demo
+# ADAS Simulator and Cloud Simulator
 
 ## System overview
 ![img_1.png](img_1.png)
@@ -11,9 +11,9 @@
 
 ## Setup environment
 ```
-- sudo apt install python
+- sudo apt install python3
 
-- python -m venv venv
+- python3 -m venv venv
 
 - source venv/bin/active
 ```
