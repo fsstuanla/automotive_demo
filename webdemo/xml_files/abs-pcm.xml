@@ -1,0 +1,44 @@
+<metadata>
+        <timestamp>2023-03-02T21:27:04Z</timestamp>
+        <modules>
+            <module>
+                <vendor>Bosch</vendor>
+                <name>ABS</name>
+                <version>3.1</version>
+                <hashes>
+                    <hash alg="SHA-384">aff816bf691e4490d4e977386c21abaceb97b7ce502d88c35c52cfdb7a7e50310ecc70019582d8247a99626bc98ad16b</hash>
+                </hashes>
+            </module>
+            <module>
+                <vendor>Bosch</vendor>
+                <name>PCM</name>
+                <version>5.0</version>
+                <hashes>
+                    <hash alg="SHA-384">aff816bf691e4490d4e977386c21abaceb97b7ce502d88c35c52cfdb7a7e50310ecc70019582d8247a99626bc98ad16b</hash>
+                </hashes>
+            </module>
+            <module>
+                <vendor>Continental</vendor>
+                <name>BCM</name>
+                <version>2.2</version>
+                <hashes>
+                    <hash alg="SHA-384">aff816bf691e4490d4e977386c21abaceb97b7ce502d88c35c52cfdb7a7e50310ecc70019582d8247a99626bc98ad16b</hash>
+                </hashes>
+            </module>
+        </modules>
+        <component bom-ref="pkg:bosch/abs-firmware@12345678" type="firmware">
+            <name>abs-firmware</name>
+            <version>12345678</version>
+            <scope>required</scope>
+        </component>
+        <component bom-ref="pkg:bosch/pcm-firmware@23456789" type="firmware">
+            <name>pcm-firmware</name>
+            <version>23456789</version>
+            <scope>required</scope>
+        </component>
+        <component bom-ref="pkg:continental/bcm-firmware@12347778" type="firmware">
+            <name>bcm-firmware</name>
+            <version>12347778</version>
+            <scope>required</scope>
+        </component>
+    </metadata>

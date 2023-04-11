@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Simulation Device">
+    <style>
+        /* So it's obvious when the button colour changes */
+        .btn {
+            transition: all 1s;
+        }
+
+        html body {
+            background-color: rgba(100, 200, 100, 0.6);
+        }
+
+        .panel-info {
+            width: 97%;
+        }
+
+        /*        .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+                    background-color: #454B1B !important;
+                }*/
+
+
+    </style>
+    <title>Simulation Device</title>
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="laptop.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <header>
+                <h1>Simulation Device
+                    <small>Version 1.0.0</small>
+                </h1>
+            </header>
+
+            <section class="Information">
+                <p>Simulation Device:</p>
+                <ul>
+                    <li>Send packets</li>
+                    <li>Receive packets</li>
+                </ul>
+            </section>
+
+            <section class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Communication</h2>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-9">
+                                    <input type="text" class="form-control" id="ip" placeholder="IP address"
+                                           value="192.168.2.100">
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group"><select id="xml_data"
+                                                                class="form-control "
+                                                                style="width: 100%;"
+                                                                tabindex="-1" aria-hidden="true">
+                                </select></div> <!-- /.form-group -->
+                                <!--                                <select id="xml_data" class="form-select">-->
+
+                                <!--                                </select>-->
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-3">
+                                    <input type="text" class="form-control" id="port" placeholder="Port number"
+                                           value="10000">
+                                </div>
+                                <div class="col-lg-9">
+
+
+                                    <button id="connect" type="button" class="btn btn-primary">
+                                        <span class="toggleonclick glyphicon glyphicon-thumbs-up hidden"></span>
+                                        <span class="toggleonclick">Connect</span>
+                                        <span class="toggleonclick hidden">Stop</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group ">
+                                    <button id="send" type="button" class="btn btn-primary">
+                                        <span class="toggleonclick glyphicon glyphicon-thumbs-up hidden"></span>
+                                        <span class="toggleonclick">Send</span>
+                                        <span class="toggleonclick hidden">Sent</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </section>
+
+            <section id="group-demos" class="panel panel-primary">
+                <header class="panel-heading">
+                    <h3 class="panel-title">Messages</h3>
+                </header>
+                <article class="panel-body">
+                    <div id="exTab1" class="container">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#2a" data-toggle="tab">Sent Messages</a>
+                            </li>
+                            <li>
+                                <a href="#1a" data-toggle="tab">Received Messages</a>
+                            </li>
+
+                            <li><a href="#3a" data-toggle="tab">Logs</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content clearfix">
+                            <div class="tab-pane " id="1a">
+                                <div class="panel panel-info" id="receive_tab">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion"
+                                               href="#received_messages">
+                                                Received Message
+                                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="received_messages" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="panel-group" id="rlist" data-click="clickchange">
+                                                <!--                            ONly for by pass js error-->
+                                                <div class="panel panel-default" hidden>
+                                                    <header class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" data-parent="#rlist"
+                                                               href="#insideOne">
+                                                            </a>
+                                                        </h4>
+                                                    </header>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="tab-pane active" id="2a">
+                                <div class="panel panel-info" id="send_tab">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#sent_messages">
+                                                Sent Messages
+                                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="sent_messages" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="panel-group" id="slist" data-click="clickchange">
+                                                <!--                            ONly for by pass js error-->
+                                                <div class="panel panel-default" hidden>
+                                                    <header class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" data-parent="#slist"
+                                                               href="#insideOne1">
+                                                            </a>
+                                                        </h4>
+                                                    </header>
+                                                    <div id="insideOne1" class="panel-collapse collapse">
+                                                        <article class="panel-body">
+                                                            This sort of structure is useful for categorising FAQs. I'm
+                                                            sure
+                                                            there are many other uses as well.
+                                                        </article>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="3a">
+                                <div class="panel panel-info" id="log_tab">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#log_messages">
+                                                Log Message
+                                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="log_messages" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="panel-group" id="llist" data-click="clickchange">
+                                                <!--                            ONly for by pass js error-->
+                                                <div class="panel panel-default" hidden>
+                                                    <header class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" data-parent="#llist"
+                                                               href="#insideOne2">
+                                                            </a>
+                                                        </h4>
+                                                    </header>
+                                                    <div id="insideOne2" class="panel-collapse collapse">
+                                                        <article class="panel-body">
+                                                            This sort of structure is useful for categorising FAQs. I'm
+                                                            sure
+                                                            there are many other uses as well.
+                                                        </article>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="4a">
+                                <h3>We use css to change the background color of the content to be equal to the tab</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+            </section>
+
+
+            <footer>
+                <h3></h3>
+
+            </footer>
+        </div>
+    </div>
+</div>
+
+<script src="dist/js/jquery.js"></script>
+<script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="dist/js/bootstrap-collapse-clickchange.js"></script>
+<script type="text/javascript" src="laptop_xml.js"></script>
+<script type="text/javascript" src="xml2json.js"></script>
+<script type="text/javascript">
+    function parseXmlToJson(xml) {
+        const json = {};
+        xml = xml.replaceAll('\\','')
+        var x2js = new X2JS();
+        var ret = x2js.xml_str2json(xml)
+        if (ret) return ret;
+
+        try {
+            for (const res of xml.matchAll(/(?:<(\w*)(?:\s[^>]*)*>)((?:(?!<\1).)*)(?:<\/\1>)|<(\w*)(?:\s*)*\/>/gm)) {
+                const key = res[1] || res[3];
+                const value = res[2] && parseXmlToJson(res[2]);
+                json[key] = ((value && Object.keys(value).length) ? value : res[2]) || null;
+            }
+        } catch (e) {
+            return e.message;
+        }
+        console.log("-> json", json);
+        return json;
+        // return xml2json.fromStr(xml)
+    }
+
+    $('#connect').click(function () {
+        $(this).attr("disabled", true);
+        listenFromSocket();
+    });
+    $(document).ready(function () {
+
+
+        $(document).on('click', '#send', function (e) {
+            sendToSocket();
+        });
+
+    });
+</script>
+<script>
+
+    function getWsMessage(info, type, message) {
+        return `{"info": "${info}", "log":"${type}", "data": "${message}"}`;
+    }
+
+    function getItem(x) {
+        console.log("-> jsondata: ", x.trim());
+        json_package = JSON.parse(x)
+        let info = json_package.info;
+        let message = json_package.data;
+        message = message.replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+        tag_id = Math.random().toString(36).slice(2)
+        var newDate = new Date();
+        current_time = newDate.toISOString();
+
+        var item = `<div class="panel panel-default">
+                                            <header class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#inside-accordion"
+                                                       href="#${tag_id}">
+                                                        <span class="glyphicon glyphicon-comment"></span>
+                                                        ${current_time}
+                                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                                    </a>
+                                                </h4>
+                                            </header>
+                                            <div id="${tag_id}" class="panel-collapse collapse">
+                                                <article class="panel-body">
+                                                                   <div class="content">
+                                                   <div class="row">
+                                                       <div class="col-lg-2">
+                                                           <p>
+                                                           <h3>Packet Info:</h3></p>
+                                                           <p>${info}</p>
+                                                       </div>
+                                                       <div class="col-lg-5 text-nowrap" >
+                                                           <p>
+                                                           <h3>Message:</h3></p>
+                                                           <p class="text-wrap">${message}</p>
+                                                       </div>
+                                                       <div class="col-lg-5">
+                                                           <p>
+                                                           <h3>XML Parser:</h3></p>
+                                                           <pre id="parsed">${JSON.stringify(parseXmlToJson(json_package.data), undefined, 2)}</pre>
+                                                       </div>
+
+                                                   </div>
+
+                                                </article>
+                                            </div>
+                                        </div>`
+        return item;
+    }
+
+
+    function listenFromSocket() {
+        port = document.getElementById("port").value;
+        ip = document.getElementById("ip").value;
+        socket = new WebSocket('ws://localhost:8001');
+        socket.addEventListener('open', function (event) {
+            let connect_info = {"type": "config", "data": {"ip": ip, "port": port}};
+            socket.send(JSON.stringify(connect_info));
+        });
+        socket.addEventListener('message', function (event) {
+            console.log('recv: ' + event.data)
+            try {
+                jsonMessage = JSON.parse(event.data)
+                var item = getItem(event.data);
+
+                if (jsonMessage.data.includes("- connected") || jsonMessage.data.includes("- disconnected"))
+                    $('#llist').prepend(item);
+                else
+                    $('#rlist').prepend(item);
+            } catch (e) {
+                console.log(e)
+                var item = getItem(getWsMessage("server", "system", event.data));
+                $('#llist').prepend(item);
+            }
+
+        });
+        const contactServer = () => {
+
+            socket.send("Initialize");
+
+        }
+    }
+
+    function escapeNewLineChars(valueToEscape) {
+        if (valueToEscape != null && valueToEscape != "") {
+            valueToEscape = valueToEscape.replaceAll('"', '\\"');
+            return valueToEscape.replaceAll(/\n/g, " ");
+        } else {
+            return valueToEscape;
+        }
+    }
+
+    function sendToSocket() {
+        var data = $('select').find('option:selected').val();
+        var socket = new WebSocket('ws://localhost:8001');
+        socket.addEventListener('open', function (event) {
+            let wsData = (xml_data[data]);
+            wsData = escapeNewLineChars(wsData)
+            console.log(wsData)
+            socket.send(wsData)
+            displayData = getWsMessage("send", "message", wsData)
+            console.log("-> displayData", displayData);
+            tag_id = "send_msg_" + Math.random().toString(36).slice(2)
+            var item = getItem(displayData);
+            // console.log(item)
+            $('#slist').prepend(item);
+        });
+
+    }
+
+
+</script>
+</body>
+</html>
