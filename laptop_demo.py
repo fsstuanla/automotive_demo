@@ -26,7 +26,7 @@ class SocketListen(threading.Thread):
             data = self.socket.recv(BUFFER_SIZE)
             if not data: break
             # print ('s<', data, self.socket.getpeername())
-            if("- connected" in data.decode('utf-8') or "- disconnected" in data.decode('utf-8')):
+            if not ("- connected" in data.decode('utf-8') or "- disconnected" in data.decode('utf-8')):
                 ws_message_string = self.get_ws_message_to_send(data, "message")
             else:
                 ws_message_string = self.get_ws_message_to_send(data, "log")
